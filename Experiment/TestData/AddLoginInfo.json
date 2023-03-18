@@ -1,0 +1,19 @@
+{
+
+  "username_valid": "hospital@rovicare.com", //hospital@rovicare.com
+  //"password_valid": "RoviPass@321",
+  "password_valid": "RoviPass@321", //Beta
+
+  "username_invalid1": "hosp%$ital@rovicare.com",
+  "password_invalid1": "RoassRoviPass@321321",
+
+  "username_invalid2": "hoxxxxxxxxxxxxpital@rovi0000000000000000care.com",
+  "password_invalid2": "Roass@321",
+
+  "username_invalid3": "*&%&*8@rovicare.com",
+  "password_invalid3": "Roass@321",
+
+  "username_invalid4": "hospital@rovicare.com",
+  "password_invalid4": "R** (*&KJH"
+
+}
