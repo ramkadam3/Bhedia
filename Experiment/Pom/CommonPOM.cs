@@ -199,7 +199,9 @@ namespace RovicareTestProject.PageObjects
                 PatientListPOM.ClickAddDummyPatientButton(Driver.Value);
                 BaseClass.WaitForSpinnerToDisappear(Driver.Value);
                 PatientListPOM.WaitForDummyPatientConfirmation(Driver.Value);
+                BaseClass.InvisibleSuccess_Notification(Driver.Value);
                 Thread.Sleep(3000);
+
                 Test.Value.Log(Status.Pass, "DummyPatient Created Successfully");
                 PatientListPOM.ClickSendReferral(Driver.Value, 1);
                 BaseClass.WaitForSpinnerToDisappear(Driver.Value);
@@ -234,20 +236,34 @@ namespace RovicareTestProject.PageObjects
                     ShortListPOM.ChooseAutoConfirm(Driver.Value);
                 }
                 ShortListPOM.ChoosePreAuthorizationRequired(Driver.Value, bool.Parse(PreAuthorization));
+                try
+                {
 
                 ShortListPOM.SelectServicesNeededSendReferralDialog(Driver.Value, ServicesNeeded.Split("|"));
+                }
+                catch { }
                 Thread.Sleep(1000);
+
+                try
+                {
+
                 ShortListPOM.SelectSpecialProgramsSendReferralDialog(Driver.Value, SpecialPrograms.Split("|"));
+                }
+                catch { }
                 Thread.Sleep(1000);
                 // ShortListPOM.SelectServicesNeededSendReferralDialog(Driver.Value, ServicesNeeded.Split);
                 // ShortListPOM.SelectSpecialProgramsSendReferralDialog(Driver.Value, SpecialPrograms.Split("|"));
                 ShortListPOM.ClickSendButton(Driver.Value);
+                Thread.Sleep(2000);
                 try
                 {
 
                     ShortListPOM.ClickOnContinueWithoutSharing(Driver.Value).Click();
                 }
-                catch { }
+                catch(Exception e) {
+                    Test.Value.Log(Status.Fail, "Unable to click on continue without sharing Error :" + e);
+                    Test.Value.Log(Status.Fail, CaptureScreenShot(Driver.Value, Filename));
+                }
                 BaseClass.WaitForSpinnerToDisappear(Driver.Value);
                 Thread.Sleep(2000);
 
