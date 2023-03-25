@@ -79,7 +79,7 @@ jobs:
 
     # Execute all unit tests in the solution
     - name: Execute unit tests
-      run: login
+      run: TestSuite_UserManagement_SuperAdmin
 
     # Restore the application to populate the obj folder with RuntimeIdentifiers
     - name: Restore the application
